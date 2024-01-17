@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+   - name: pause
+     image: cr.yandex/mirror/io/k8s/registry/pause
+     volumeMounts:
+       - mountPath: /tmp
+         name: my-pvc
+  volumes:
+   - name: my-pvc
+     persistentVolumeClaim:
+       claimName: my-pvc
+       readOnly: false
